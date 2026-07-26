@@ -382,9 +382,24 @@ export default function App() {
           </p>
 
           <div className="doc-point">
-            <div className="doc-point-title">For Homeowners</div>
-            <div className="button-row">
-              <a href="/StormWatch_Residential_Insert.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-dark">Program Flyer (PDF)</a>
+            <div className="doc-point-title">For Homeowners — Enroll Online</div>
+            <p>Enroll in 30 seconds and you're on Storm Watch. It goes straight into our system — we start watching your home's address right away and reach out if a storm hits. Free, no obligation.</p>
+            <div className="card emergency-card">
+              <form onSubmit={submitEnroll} className="form-grid">
+                <input name="name" placeholder="Full name" value={enroll.name} onChange={handleEnroll} />
+                <input name="phone" placeholder="Phone" value={enroll.phone} onChange={handleEnroll} />
+                <input name="email" placeholder="Email" value={enroll.email} onChange={handleEnroll} />
+                <input name="zip" placeholder="ZIP" value={enroll.zip} onChange={handleEnroll} />
+                <input name="address" placeholder="Home address" value={enroll.address} onChange={handleEnroll} className="full" />
+                <input name="city" placeholder="City" value={enroll.city} onChange={handleEnroll} />
+                <input name="state" placeholder="State" value={enroll.state} onChange={handleEnroll} />
+                <input name="company" value={enroll.company} onChange={handleEnroll} className="full" style={{ display: "none" }} tabIndex={-1} autoComplete="off" aria-hidden="true" />
+                <button type="submit" className="btn btn-lime full" disabled={enrollBusy}>{enrollBusy ? "Sending…" : "Enroll free in Storm Watch"}</button>
+              </form>
+              {enrollStatus ? <p className="page-copy" style={{ marginTop: "0.75rem" }}>{enrollStatus}</p> : null}
+            </div>
+            <div className="button-row top-gap">
+              <a href="/StormWatch_Residential_Insert.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-outline">Program Flyer (PDF)</a>
               <a href="/StormWatch_Residential_OneSheet.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-outline">Program Details (PDF)</a>
             </div>
           </div>
@@ -395,29 +410,6 @@ export default function App() {
               <a href="/StormWatch_Church_Insert.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-dark">Church Flyer (PDF)</a>
               <a href="/StormWatch_Church_OneSheet.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-outline">Church Details (PDF)</a>
               <a href="/StormWatch_Church_Enrollment.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-outline">Church Enrollment Form (PDF)</a>
-            </div>
-          </div>
-
-          <div className="doc-point top-gap">
-            <div className="doc-point-title">Enroll online — free, 30 seconds</div>
-            <p>Fill this out and you're on Storm Watch. It goes straight into our system — we start watching your address right away and reach out if a storm hits.</p>
-            <div className="card emergency-card">
-              <form onSubmit={submitEnroll} className="form-grid">
-                <input name="name" placeholder="Full name" value={enroll.name} onChange={handleEnroll} />
-                <input name="phone" placeholder="Phone" value={enroll.phone} onChange={handleEnroll} />
-                <input name="email" placeholder="Email" value={enroll.email} onChange={handleEnroll} />
-                <select name="kind" value={enroll.kind} onChange={handleEnroll}>
-                  <option value="home">Home</option>
-                  <option value="church">Church / facility</option>
-                </select>
-                <input name="address" placeholder="Property address" value={enroll.address} onChange={handleEnroll} className="full" />
-                <input name="city" placeholder="City" value={enroll.city} onChange={handleEnroll} />
-                <input name="state" placeholder="State" value={enroll.state} onChange={handleEnroll} />
-                <input name="zip" placeholder="ZIP" value={enroll.zip} onChange={handleEnroll} />
-                <input name="company" value={enroll.company} onChange={handleEnroll} className="full" style={{ display: "none" }} tabIndex={-1} autoComplete="off" aria-hidden="true" />
-                <button type="submit" className="btn btn-lime full" disabled={enrollBusy}>{enrollBusy ? "Sending…" : "Enroll free in Storm Watch"}</button>
-              </form>
-              {enrollStatus ? <p className="page-copy" style={{ marginTop: "0.75rem" }}>{enrollStatus}</p> : null}
             </div>
           </div>
 
