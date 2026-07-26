@@ -74,7 +74,8 @@ function PageHeader({ onNavigate, onBack }) {
             <button onClick={() => onNavigate("services")}>Services</button>
             <button onClick={() => onNavigate("projects")}>Projects</button>
             <button onClick={() => onNavigate("commercial")}>Commercial Claims</button>
-            <a href="https://www.facebook.com/profile.php?id=61582172224147" target="_blank" rel="noopener noreferrer">Facebook</a>
+            <a href="#storm-watch">Storm Watch</a>
+            <a href="https://www.facebook.com/titanbrbinc" target="_blank" rel="noopener noreferrer">Facebook</a>
           </nav>
         ) : null}
         {onBack ? (
@@ -82,7 +83,8 @@ function PageHeader({ onNavigate, onBack }) {
         ) : (
           <div className="header-actions">
             <a href="tel:2022137934" className="btn btn-dark">Call Now</a>
-            <a href="https://www.facebook.com/profile.php?id=61582172224147" target="_blank" rel="noopener noreferrer" className="btn btn-outline">Facebook</a>
+            <a href="https://www.facebook.com/titanbrbinc" target="_blank" rel="noopener noreferrer" className="btn btn-outline">Facebook</a>
+            <a href="https://storm-hunter-phi.vercel.app/" target="_blank" rel="noopener noreferrer" className="btn btn-outline">Customer Login</a>
           </div>
         )}
       </div>
@@ -136,7 +138,7 @@ function SiteFooter() {
           <div className="footer-label">Contact</div>
           <a href="tel:2022137934">202-213-7934</a>
           <a href="mailto:patrick.tcr@icloud.com">patrick.tcr@icloud.com</a>
-          <a href="https://www.facebook.com/profile.php?id=61582172224147" target="_blank" rel="noopener noreferrer">Facebook</a>
+          <a href="https://www.facebook.com/titanbrbinc" target="_blank" rel="noopener noreferrer">Facebook</a>
         </div>
         <div className="footer-contact">
           <div className="footer-label">Service Area</div>
@@ -330,6 +332,39 @@ export default function App() {
                 <div className="grid segment-grid">{commercialSegments.map((item) => <div key={item} className="segment-card">{item}</div>)}</div>
               </div>
             </div>
+          </div>
+        </section>
+
+        <section id="storm-watch" className="container section">
+          <SectionBadge>Storm Watch Program</SectionBadge>
+          <h2 className="section-title">Free lifetime roof monitoring — no cost, no obligation.</h2>
+          <p className="page-copy">
+            Enroll your home or church in TITAN BRB's Storm Watch Program. We document your roof's
+            current condition, then monitor your exact location for hail and damaging wind. If a
+            qualifying storm strikes, we notify you and return for a <strong>free re-inspection</strong> —
+            so any new damage is caught early and documented while it's fresh. No cost, no obligation.
+          </p>
+
+          <div className="doc-point">
+            <div className="doc-point-title">For Homeowners</div>
+            <div className="button-row">
+              <a href="/StormWatch_Residential_Insert.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-dark">Program Flyer (PDF)</a>
+              <a href="/StormWatch_Residential_OneSheet.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-outline">Program Details (PDF)</a>
+            </div>
+          </div>
+
+          <div className="doc-point top-gap">
+            <div className="doc-point-title">For Churches</div>
+            <div className="button-row">
+              <a href="/StormWatch_Church_Insert.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-dark">Church Flyer (PDF)</a>
+              <a href="/StormWatch_Church_OneSheet.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-outline">Church Details (PDF)</a>
+              <a href="/StormWatch_Church_Enrollment.pdf" target="_blank" rel="noopener noreferrer" className="btn btn-outline">Church Enrollment Form (PDF)</a>
+            </div>
+          </div>
+
+          <div className="button-row top-gap">
+            <a href="tel:2022137934" className="btn btn-lime">Enroll — Call 202-213-7934</a>
+            <a href="https://storm-hunter-phi.vercel.app/" target="_blank" rel="noopener noreferrer" className="btn btn-outline">Customer Login</a>
           </div>
         </section>
 
