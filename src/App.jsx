@@ -84,7 +84,7 @@ function PageHeader({ onNavigate, onBack }) {
           <div className="header-actions">
             <a href="tel:2022137934" className="btn btn-dark">Call Now</a>
             <a href="https://www.facebook.com/titanbrbinc" target="_blank" rel="noopener noreferrer" className="btn btn-outline">Facebook</a>
-            <a href="https://storm-hunter-phi.vercel.app/" target="_blank" rel="noopener noreferrer" className="btn btn-outline">Customer Login</a>
+            <a href="https://storm-hunter-phi.vercel.app/" target="_blank" rel="noopener noreferrer" className="btn btn-outline">Team Login</a>
           </div>
         )}
       </div>
@@ -202,6 +202,42 @@ export default function App() {
   const handleChange = (event) => {
     const { name, value } = event.target;
     setForm((current) => ({ ...current, [name]: value }));
+  };
+
+  // ---- Live Storm Watch enrollment: posts to the app and creates a lead ----
+  const emptyEnroll = { name: "", phone: "", email: "", address: "", city: "", state: "", zip: "", kind: "home", company: "" };
+  const [enroll, setEnroll] = useState(emptyEnroll);
+  const [enrollStatus, setEnrollStatus] = useState("");
+  const [enrollBusy, setEnrollBusy] = useState(false);
+  const handleEnroll = (event) => {
+    const { name, value } = event.target;
+    setEnroll((current) => ({ ...current, [name]: value }));
+  };
+  const submitEnroll = async (event) => {
+    event.preventDefault();
+    if (!enroll.name || (!enroll.phone && !enroll.email && !enroll.address)) {
+      setEnrollStatus("Please add your name and at least a phone, email, or address.");
+      return;
+    }
+    setEnrollBusy(true);
+    setEnrollStatus("Sending…");
+    try {
+      const r = await fetch("https://storm-hunter-phi.vercel.app/api/enroll", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(enroll),
+      });
+      const j = await r.json();
+      if (j && j.ok) {
+        setEnrollStatus("You're enrolled in Titan Storm Watch. We'll watch your address and reach out if a storm hits. Thank you!");
+        setEnroll(emptyEnroll);
+      } else {
+        setEnrollStatus((j && j.error) || "Something went wrong — please call 202-213-7934.");
+      }
+    } catch (e) {
+      setEnrollStatus("Couldn't submit right now — please call or text 202-213-7934.");
+    }
+    setEnrollBusy(false);
   };
 
   if (page === "services") {
@@ -362,9 +398,32 @@ export default function App() {
             </div>
           </div>
 
+          <div className="doc-point top-gap">
+            <div className="doc-point-title">Enroll online — free, 30 seconds</div>
+            <p>Fill this out and you're on Storm Watch. It goes straight into our system — we start watching your address right away and reach out if a storm hits.</p>
+            <div className="card emergency-card">
+              <form onSubmit={submitEnroll} className="form-grid">
+                <input name="name" placeholder="Full name" value={enroll.name} onChange={handleEnroll} />
+                <input name="phone" placeholder="Phone" value={enroll.phone} onChange={handleEnroll} />
+                <input name="email" placeholder="Email" value={enroll.email} onChange={handleEnroll} />
+                <select name="kind" value={enroll.kind} onChange={handleEnroll}>
+                  <option value="home">Home</option>
+                  <option value="church">Church / facility</option>
+                </select>
+                <input name="address" placeholder="Property address" value={enroll.address} onChange={handleEnroll} className="full" />
+                <input name="city" placeholder="City" value={enroll.city} onChange={handleEnroll} />
+                <input name="state" placeholder="State" value={enroll.state} onChange={handleEnroll} />
+                <input name="zip" placeholder="ZIP" value={enroll.zip} onChange={handleEnroll} />
+                <input name="company" value={enroll.company} onChange={handleEnroll} className="full" style={{ display: "none" }} tabIndex={-1} autoComplete="off" aria-hidden="true" />
+                <button type="submit" className="btn btn-lime full" disabled={enrollBusy}>{enrollBusy ? "Sending…" : "Enroll free in Storm Watch"}</button>
+              </form>
+              {enrollStatus ? <p className="page-copy" style={{ marginTop: "0.75rem" }}>{enrollStatus}</p> : null}
+            </div>
+          </div>
+
           <div className="button-row top-gap">
-            <a href="tel:2022137934" className="btn btn-lime">Enroll — Call 202-213-7934</a>
-            <a href="https://storm-hunter-phi.vercel.app/" target="_blank" rel="noopener noreferrer" className="btn btn-outline">Customer Login</a>
+            <a href="tel:2022137934" className="btn btn-outline">Prefer to talk? Call 202-213-7934</a>
+            <a href="https://storm-hunter-phi.vercel.app/" target="_blank" rel="noopener noreferrer" className="btn btn-outline">Team Login</a>
           </div>
         </section>
 
