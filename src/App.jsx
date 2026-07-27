@@ -33,15 +33,18 @@ const services = [
 ];
 
 const residentialDatabase = [
-  { img: { local: "/images/residential-1.jpg", fallback: "/images/residential-1.jpg" }, title: "Residential Roof Replacement", text: "Full residential roof replacement project with active install crew and clean jobsite workflow." },
-  { img: { local: "/images/residential-2.jpg", fallback: "/images/residential-2.jpg" }, title: "Residential Roof Project 1", text: "Residential roofing inspection and restoration work designed for homeowner clarity and strong curb appeal." },
-  { img: { local: "/images/residential-3.jpg", fallback: "/images/residential-3.jpg" }, title: "Residential Roof Project 2", text: "Residential property roof evaluation and damage assessment supporting insurance-based restoration decisions." }
+  { img: { local: "/images/residential-1.jpg", fallback: "/images/residential-1.jpg" }, title: "Full Roof Replacement", text: "Completed asphalt shingle roof replacement with a clean tear-off, new underlayment, and full curb appeal restored after storm damage." },
+  { img: { local: "/images/residential-2.jpg", fallback: "/images/residential-2.jpg" }, title: "Storm Restoration — Colonial", text: "Insurance-backed roof replacement completed for a storm-damaged home, handled from inspection through final walk-through." },
+  { img: { local: "/images/residential-3.jpg", fallback: "/images/residential-3.jpg" }, title: "Roof Replacement — Brick Home", text: "New architectural shingle roof installed after hail and wind damage, matched to the home's classic brick exterior." },
+  { img: { local: "/images/residential-4.jpg", fallback: "/images/residential-4.jpg" }, title: "Completed Residential Roof", text: "Fresh architectural shingles, clean lines, and a property left protected — a completed Titan BRB residential project." },
+  { img: { local: "/images/residential-5.jpg", fallback: "/images/residential-5.jpg" }, title: "Roof + Exterior Restoration", text: "Full roof replacement with attention to gutters, flashing, and finish details for lasting protection." },
+  { img: { local: "/images/residential-6.jpg", fallback: "/images/residential-6.jpg" }, title: "Curb Appeal Restored", text: "Another completed home — durable new roofing installed and the jobsite left clean and finished." }
 ];
 
 const commercialDatabase = [
-  { img: { local: "/images/commercial-1.jpg", fallback: "/images/commercial-1.jpg" }, title: "Mosaic Church Project", text: "Commercial roofing project documentation for church property restoration and claim support." },
-  { img: { local: "/images/commercial-2.jpg", fallback: "/images/commercial-2.jpg" }, title: "Church Exterior", text: "Commercial church property inspection and restoration work with large-site visibility and documentation." },
-  { img: { local: "/images/commercial-3.jpg", fallback: "/images/commercial-3.jpg" }, title: "Commercial Roof Inspection", text: "Technician-led commercial roof inspection focused on damage capture, safety, and claim-readiness." }
+  { img: { local: "/images/commercial-1.jpg", fallback: "/images/commercial-1.jpg" }, title: "Peace Lutheran Church — Washington, DC", text: "Before & after: an aging, storm-worn church roof fully replaced with new architectural shingles — a completed reroof from tear-off to finish." },
+  { img: { local: "/images/commercial-2.jpg", fallback: "/images/commercial-2.jpg" }, title: "Multi-Family Community — Storm Roof Replacement", text: "Before & after: storm-damaged roofs across a residential community, emergency-tarped and then fully replaced." },
+  { img: { local: "/images/commercial-3.jpg", fallback: "/images/commercial-3.jpg" }, title: "St James Lutheran Church — Baltimore, MD", text: "Emergency storm response and historic slate roof restoration — from failing slate to an active replacement by our crew." }
 ];
 
 const stats = [
